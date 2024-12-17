@@ -23,6 +23,7 @@
 #include "ml/eval/biclassification_component.h"
 #include "ml/eval/prediction_bias_component.h"
 #include "ml/predict/lgbm_component.h"
+#include "ml/predict/llm_component.h"
 #include "ml/predict/lr_component.h"
 #include "ml/predict/xgb_component.h"
 #include "ml/train/lgbm_component.h"
@@ -66,6 +67,7 @@ struct ComponentName {
   static constexpr char kXgbPredictComp[] = "xgb_predict";
   static constexpr char kLrPredictComp[] = "lr_predict";
   static constexpr char kLgbmPredictComp[] = "lgbm_predict";
+  static constexpr char kLlmPredictComp[] = "llm_predict";
   static constexpr char kBiclassificationEvalComp[] = "biclassification_eval";
   static constexpr char kPredictionBiasComp[] = "prediction_bias_eval";
 };
@@ -87,6 +89,7 @@ struct ComponentPyFile {
   static constexpr char kLrPy[] = "lr.py";
   static constexpr char kLgbmPy[] = "lgbm.py";
   static constexpr char kPredictPy[] = "predict.py";
+  static constexpr char kLlmPredictPy[] = "llm_predict.py";
   static constexpr char kBiclassEvalPy[] = "biclassification_eval.py";
   static constexpr char kPredBiasPy[] = "prediction_bias_eval.py";
 };
@@ -106,6 +109,7 @@ const std::unordered_map<std::string, std::string> comp_py_map = {
     {ComponentName::kXgbPredictComp, ComponentPyFile::kPredictPy},
     {ComponentName::kLrPredictComp, ComponentPyFile::kPredictPy},
     {ComponentName::kLgbmPredictComp, ComponentPyFile::kPredictPy},
+    {ComponentName::kLlmPredictComp, ComponentPyFile::kLlmPredictPy},
     {ComponentName::kBiclassificationEvalComp, ComponentPyFile::kBiclassEvalPy},
     {ComponentName::kPredictionBiasComp, ComponentPyFile::kPredBiasPy}};
 
@@ -180,6 +184,10 @@ const std::map<std::string, secretflow::spec::v1::ComponentDef> COMP_DEF_MAP = {
                      ComponentName::kLgbmPredictComp, kCompVersion),
      secretflow::spec::v1::ComponentDef(
          *teeapps::component::LgbmPredComponent::GetInstance().Definition())},
+    {GenCompFullName(ComponentDomain::kMlPredictDomain,
+                     ComponentName::kLlmPredictComp, kCompVersion),
+     secretflow::spec::v1::ComponentDef(
+         *teeapps::component::LlmPredComponent::GetInstance().Definition())},
     {GenCompFullName(ComponentDomain::kMlEvalDomain,
                      ComponentName::kBiclassificationEvalComp, kCompVersion),
      secretflow::spec::v1::ComponentDef(

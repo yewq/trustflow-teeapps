@@ -1,0 +1,14 @@
+load("@rules_python//python:defs.bzl", "py_binary")
+
+package(default_visibility = ["//visibility:public"])
+
+py_binary(
+    name = "llm_predict",
+    srcs = [
+        "llm_predict.py",
+    ],
+    deps = [
+        "//teeapps/biz/common",
+        "@sf_spec//:py_sf_spec_proto",
+    ],
+)
