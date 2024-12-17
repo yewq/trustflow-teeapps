@@ -1,0 +1,32 @@
+{
+    "sf_node_eval_param": {
+        "domain": "ml.predict",
+        "name": "llm_predict",
+        "version": "0.0.1",
+        "attr_paths": [],
+        "attrs": [],
+        "inputs": [
+            {
+                "name": "llm_prompt",
+                "type": "sf.llm.prompt",
+                "data_refs": [
+                    {
+                        "uri": "file://input/?id=llm_prompt&&uri=/host/testdata/llm/llm_prompt.enc"
+                    }
+                ]
+            },
+            {
+                "name": "llm_model",
+                "type": "sf.model.llm",
+                "data_refs": [
+                    {
+                        "uri": "file://input/?id=llm_model&&uri=/host/testdata/llm/llm_model.enc"
+                    }
+                ]
+            }
+        ],
+        "output_uris": [
+            "file://output/?id=yewq-llm&&uri=/host/testdata/llm/predict"
+        ]
+    }
+}

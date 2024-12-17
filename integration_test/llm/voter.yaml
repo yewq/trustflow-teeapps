@@ -1,0 +1,10 @@
+# (required) str, vote request signature
+vote_request_signature: CRDgYVTGF6veKIpNp5fyY95VFlHQFJTGPD62SHlEaiZyrd+O7EdSfG1SdTRK76Pf23wJh8j3tSFqwaPWs9xXBqO4Mdc3oINsHQyFToVH7UXEILInzZ+gtydE3cS2gsiAGBYZz6Ia3FIZwCZnQcfHnMahrSEhwg/wTOj+eBPEDRezEccbqxMhkkK6VNJRkQhvfsjfg5zwRU/l77xA7JIX8zTwf1YzskvzzVA3YU7Wq1DrjrTADyIWkP7IsDNpAnWi2F+2+xy0a8Tl/SfnD6XRpbPZPUvKU1ugyMJC4L2ipkRXdum8ycE3cxASoWHyZyD8bN0GzGLWAwoqpdWctmfhdsUe35JkisHFaELibjqxaP++SByw60fnP71zTi0TqVxgdOIA7PhzVkJGUa23Ta13E/s41TRP5peYURYm3Sbh/1XMi7h01587k1rBg2jDCAIEuIGF07z1hhedNuhg7uVQ3xgIQuGu/ET0M/X1XEx5J6cUI7E20URURcWt/B3t//XV 
+# (required) str, APPROVE/REJECT
+action: "APPROVE"
+# (required) List[str], cert chain files, the order is [cert, mid_ca_cert, root_ca_cert]
+# file num can be 1 if the cert is self-signed
+cert_chain_file: 
+  - "llm_model.crt"
+# (required) str, file contains voter's private key
+private_key_file: "llm_model.key"

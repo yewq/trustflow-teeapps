@@ -1,0 +1,13 @@
+vote_request:
+  # (required) str, vote type, should be "TEE_DOWNLOAD" when export data keys for tee tasks' encrypted result
+  type: "TEE_DOWNLOAD"
+  # (required) int, vote approved threshold
+  approved_threshold: 1
+  # (required) str, vote approved action, shoule be "tee/download,xxxx_uuid", replace "xxxx_uuid" with tee task's result data_uuid
+  approved_action: "tee/download,yewq-llm"
+  # (required) List[str], cert chain files, the order is [cert, mid_ca_cert, root_ca_cert]
+  # file num can be 1 if the cert is self-signed
+  cert_chain_file: 
+    - "llm_prompt.crt"
+  # (required) str, file contains private key
+  private_key_file: "llm_prompt.key"
