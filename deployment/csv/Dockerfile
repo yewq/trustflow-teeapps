@@ -44,7 +44,11 @@ COPY --from=builder /host/certs /host/certs
 COPY --from=builder /host/integration_test /host/integration_test
 COPY --from=builder /host/testdata /host/testdata
 
-ENV PATH /home/teeapp/python/bin:$PATH
+ENV PATH /home/teeapp/python/bin:/home/teeapp/csv/teeapps/biz:$PATH
+ENV LD_LIBRARY_PATH /home/teeapp/csv/teeapps/biz
+
+RUN apt update
+RUN apt install libgomp1
 
 WORKDIR /home/teeapp/csv/teeapps
 

@@ -68,6 +68,16 @@ mkdir -p /host/certs
 # test dataset
 mkdir -p /host/testdata/breast_cancer
 mkdir -p /host/integration_test
-cp $workspace_dir/integration_test/* /host/integration_test/
+cp -r $workspace_dir/integration_test/* /host/integration_test/
 
-
+# build llama.cpp
+apt update -y
+apt install git cmake g++ -y
+cd $workspace_dir
+git clone https://github.com/ggerganov/llama.cpp.git
+cd llama.cpp
+cmake -B build
+cmake --build build -j 8
+cp $workspace_dir/llama.cpp/build/bin/llama-cli $target_dir/csv/teeapps/biz/llama-cli
+cp $workspace_dir/llama.cpp/build/src/libllama.so $target_dir/csv/teeapps/biz/libllama.so
+cp $workspace_dir/llama.cpp/build/ggml/src/*.so $target_dir/csv/teeapps/biz/
